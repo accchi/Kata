@@ -15,4 +15,15 @@ public class StringCalculatorUnitTest {
     // Then
     assertThat(result).isEqualTo(0);
   }
+
+  @Test
+  void shouldReturnTwoForTwoOnes() {
+    // Given
+    StringCalculator calculator = new StringCalculator();
+    String numbers = "1,1";
+    // When
+    int result = calculator.add(numbers);
+    // Then
+    assertThat(result).isEqualTo(2);
+  }
 }
