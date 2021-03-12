@@ -1,29 +1,28 @@
 package com.github.accchi.kata;
 
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringCalculatorUnitTest {
 
-  @Test
-  void shouldReturnZeroForTwoZeros() {
-    // Given
-    StringCalculator calculator = new StringCalculator();
-    String numbers = "0,0";
-    // When
-    int result = calculator.add(numbers);
-    // Then
-    assertThat(result).isEqualTo(0);
+  private static Object[][] testData() {
+    return new Object[][]
+        {
+            {"0,0", 0},
+            {"1,1", 2},
+        };
   }
 
-  @Test
-  void shouldReturnTwoForTwoOnes() {
+  @ParameterizedTest(name = "For {0} should return {1}")
+  @MethodSource("testData")
+  void shouldReturnExpectedValueForGiven(String numbers, int expectedValue) {
     // Given
     StringCalculator calculator = new StringCalculator();
-    String numbers = "1,1";
     // When
     int result = calculator.add(numbers);
     // Then
-    assertThat(result).isEqualTo(2);
+    assertThat(result).isEqualTo(expectedValue);
   }
 }
