@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.*;
 public class StringCalculatorUnitTest {
 
   @Test
-  void emptyTest() {
+  void shouldReturnZeroForTwoZeros() {
     // Given
     StringCalculator calculator = new StringCalculator();
     String numbers = "0,0";
